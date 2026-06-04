@@ -29,7 +29,6 @@ const photos = [
 ---
 
 <section id="portfolio" class="portfolio">
-  <div class="topo-bg" aria-hidden="true"></div>
   <div class="container portfolio-header reveal">
     <span class="section-label">Portfolio</span>
     <h2 class="section-heading light">Work that speaks<br />for itself.</h2>
@@ -46,23 +45,24 @@ const photos = [
 <style>
   .portfolio {
     position: relative;
-    background: var(--color-obsidian);
+    background: #0A0A0A;
     padding-top: var(--section-y);
     padding-bottom: 0;
     overflow: hidden;
   }
 
-  /* Topographic background */
-  .topo-bg {
+  .portfolio::before {
+    content: '';
     position: absolute;
     inset: 0;
     background-image: url('/images/topographic-hr.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    mix-blend-mode: screen;
+    opacity: 0.12;
     pointer-events: none;
     z-index: 0;
-    opacity:0.1;
   }
 
   .portfolio-header {
