@@ -1,8 +1,12 @@
 ---
+import TopoBackground from './TopoBackground.astro';
 ---
 
 <section class="hero">
   <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <TopoBackground />
+
   <div class="container hero-content">
     <span class="section-label">Real Estate Photography</span>
     <h1 class="hero-headline reveal">
@@ -16,6 +20,13 @@
       <a href="#portfolio" class="btn-ghost">See the Work</a>
     </div>
   </div>
+
+  <div class="hero-meta" aria-hidden="true">
+    <span class="hero-coords">29°25′N &nbsp; 98°29′W</span>
+    <span class="hero-divider"></span>
+    <span class="hero-coords">San Antonio, TX</span>
+  </div>
+
   <div class="hero-scroll" aria-hidden="true"></div>
 </section>
 
@@ -30,6 +41,7 @@
     overflow: hidden;
   }
 
+  /* Photo layer */
   .hero-bg {
     position: absolute;
     inset: 0;
@@ -37,19 +49,33 @@
     background-size: cover;
     background-position: center;
     pointer-events: none;
+    z-index: 0;
   }
 
   .hero-bg::after {
     content: '';
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.75) 100%);
+    background: linear-gradient(110deg, rgba(10,10,10,0.80) 0%, rgba(10,10,10,0.55) 55%, rgba(10,10,10,0.40) 100%);
+  }
+
+  /* Ambient gold glow — subtle warm light in upper right */
+  .hero-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 55% 45% at 78% 30%, rgba(201,168,76,0.08) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Topo sits above overlays, below content */
+  :global(.topo-wrap) {
+    z-index: 2;
   }
 
   .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 3;
     max-width: var(--text-max);
   }
 
@@ -114,9 +140,38 @@
 
   .btn-ghost:hover {
     border-color: rgba(255, 255, 255, 0.55);
-    color: var(--color-warm-white);
   }
 
+  /* Coordinate badge — bottom center */
+  .hero-meta {
+    position: absolute;
+    bottom: var(--space-12);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    white-space: nowrap;
+  }
+
+  .hero-coords {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.28);
+  }
+
+  .hero-divider {
+    display: inline-block;
+    width: 1px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  /* Scroll indicator */
   .hero-scroll {
     position: absolute;
     bottom: var(--space-8);
@@ -124,12 +179,17 @@
     transform: translateX(-50%);
     width: 1px;
     height: 48px;
-    background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.5));
+    background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.45));
     animation: scrollLine 2s ease-in-out infinite;
+    z-index: 3;
   }
 
   @keyframes scrollLine {
     0%, 100% { opacity: 0.4; transform: translateX(-50%) scaleY(1); }
-    50% { opacity: 1; transform: translateX(-50%) scaleY(0.7); }
+    50%       { opacity: 1;   transform: translateX(-50%) scaleY(0.7); }
+  }
+
+  @media (max-width: 768px) {
+    .hero-meta { display: none; }
   }
 </style>

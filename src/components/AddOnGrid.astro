@@ -27,6 +27,7 @@ const addons = [
         {addons.map((item, i) => (
           <li class="addon-row reveal" style={`transition-delay: ${i * 50}ms`}>
             <span class="addon-name">{item.name}</span>
+            <span class="addon-dots" aria-hidden="true"></span>
             <span class="addon-price">{item.price}</span>
           </li>
         ))}
@@ -64,11 +65,10 @@ const addons = [
 
   .addon-row {
     display: flex;
-    justify-content: space-between;
     align-items: baseline;
     padding-block: var(--space-4);
     border-bottom: 1px solid var(--color-border);
-    gap: var(--space-4);
+    gap: var(--space-3);
   }
 
   .addon-row:first-child {
@@ -80,6 +80,15 @@ const addons = [
     font-size: 13px;
     font-weight: 400;
     color: var(--color-obsidian);
+    flex-shrink: 0;
+  }
+
+  /* Dot leader */
+  .addon-dots {
+    flex: 1;
+    min-width: var(--space-4);
+    border-bottom: 1px dotted rgba(107,104,96,0.25);
+    margin-bottom: 3px;
   }
 
   .addon-price {
@@ -88,6 +97,7 @@ const addons = [
     font-weight: 300;
     color: var(--color-gold-muted);
     white-space: nowrap;
+    flex-shrink: 0;
   }
 
   @media (max-width: 768px) {

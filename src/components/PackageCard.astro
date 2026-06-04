@@ -43,6 +43,23 @@ const { tier, name, price, features, badge } = Astro.props;
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
   }
 
+  /* Corner bracket — bottom right */
+  .card::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 14px;
+    height: 14px;
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+    border-right: 1px solid rgba(201,168,76,0.25);
+    pointer-events: none;
+  }
+
+  .card--elite::after {
+    border-color: rgba(201,168,76,0.40);
+  }
+
   /* Elementary */
   .card--elementary {
     background: var(--color-warm-white);
