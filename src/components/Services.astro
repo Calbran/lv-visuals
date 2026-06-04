@@ -1,0 +1,83 @@
+---
+import PackageCard from './PackageCard.astro';
+
+const packages = [
+  {
+    tier: 'elementary' as const,
+    name: 'Elementary',
+    price: 'Starting at $100',
+    features: [
+      '15–20 high-resolution photos',
+      'Front and back yard coverage',
+      'Professional color correction',
+      '48-hour delivery',
+    ],
+  },
+  {
+    tier: 'standard' as const,
+    name: 'Standard',
+    price: 'Starting at $150',
+    badge: 'Most Popular',
+    features: [
+      '20–25 high-resolution photos',
+      'Interior HDR photography',
+      'Twilight shoot (optional add-on)',
+      '48–72 hour delivery',
+    ],
+  },
+  {
+    tier: 'elite' as const,
+    name: 'Elite',
+    price: 'Starting at $350',
+    features: [
+      '50+ high-resolution photos',
+      '360° virtual tour included',
+      'Twilight exterior shoot',
+      'Advanced editing & retouching',
+      'Video reels (30–60 sec)',
+      '24–48 hour delivery',
+    ],
+  },
+];
+---
+
+<section id="services" class="services">
+  <div class="container">
+    <div class="section-intro reveal">
+      <span class="section-label">Packages</span>
+      <h2 class="section-heading dark">The right package<br />for every listing.</h2>
+    </div>
+    <div class="cards-grid">
+      {packages.map((pkg, i) => (
+        <div class="reveal" style={`transition-delay: ${i * 100}ms`}>
+          <PackageCard {...pkg} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    background: var(--color-linen);
+    padding-block: var(--section-y);
+  }
+
+  .section-intro {
+    margin-bottom: var(--space-12);
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .cards-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+    }
+  }
+</style>

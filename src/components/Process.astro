@@ -1,0 +1,90 @@
+---
+const steps = [
+  { n: '01', title: 'Book your shoot', body: 'Choose a package and schedule online. Same-week availability in most markets.' },
+  { n: '02', title: 'We come to you', body: 'Our photographer arrives on time, fully equipped. No prep needed on your end.' },
+  { n: '03', title: 'Editing & delivery', body: 'Professional post-processing overnight. Your gallery is ready within 48 hours.' },
+  { n: '04', title: 'List with confidence', body: 'Download your assets and publish. Every file is print-ready and MLS-optimized.' },
+];
+---
+
+<section id="process" class="process">
+  <div class="container">
+    <div class="process-header reveal">
+      <span class="section-label">How It Works</span>
+      <h2 class="section-heading light">From booking to listing<br />in 48 hours.</h2>
+    </div>
+    <ol class="steps">
+      {steps.map((s, i) => (
+        <li class="step reveal" style={`transition-delay: ${i * 100}ms`}>
+          <span class="step-num">{s.n}</span>
+          <div>
+            <h3 class="step-title">{s.title}</h3>
+            <p class="step-body">{s.body}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .process {
+    background: var(--color-obsidian);
+    padding-block: var(--section-y);
+  }
+
+  .process-header {
+    margin-bottom: var(--space-12);
+  }
+
+  .steps {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-8);
+    counter-reset: steps;
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--color-gold);
+    opacity: 0.6;
+    line-height: 1;
+  }
+
+  .step-title {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--color-warm-white);
+    margin-bottom: var(--space-2);
+  }
+
+  .step-body {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  @media (max-width: 900px) {
+    .steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .steps {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
+
+:root {
+  /* Colors */
+  --color-obsidian:   #0A0A0A;
+  --color-gold:       #C9A84C;
+  --color-gold-light: #F0E6C8;
+  --color-gold-muted: #8B7235;
+  --color-warm-white: #FAFAF8;
+  --color-linen:      #F5F4F0;
+  --color-slate:      #6B6860;
+  --color-border:     rgba(0, 0, 0, 0.10);
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  /* Spacing */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Border Radius */
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 16px;
+
+  /* Motion */
+  --ease-fast:     200ms cubic-bezier(0.2, 0, 0.4, 1);
+  --ease-standard: 350ms cubic-bezier(0.2, 0, 0.2, 1);
+  --ease-entrance: 550ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --max-width:    1200px;
+  --text-max:     640px;
+  --section-y:    var(--space-24);
+  --nav-height:   64px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-y:  var(--space-16);
+    --nav-height: 56px;
+  }
+}

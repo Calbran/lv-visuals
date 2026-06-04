@@ -1,0 +1,122 @@
+---
+---
+
+<section id="about" class="about">
+  <div class="container about-inner">
+    <div class="about-copy reveal">
+      <span class="section-label">About</span>
+      <h2 class="section-heading dark">Photography built<br />for real estate.</h2>
+      <p>
+        LV Visuals is a boutique real estate photography studio focused on one thing:
+        helping agents and sellers present their properties at the highest possible level.
+        Every shoot is approached with precision, every edit with intention.
+      </p>
+      <p>
+        We understand that time is a constraint and quality is non-negotiable. That is why every package
+        includes professional delivery within 48 hours — no exceptions.
+      </p>
+      <a href="#contact" class="btn-dark">Get in Touch</a>
+    </div>
+    <div class="about-stat-grid reveal">
+      {[
+        { value: '48hr', label: 'Turnaround' },
+        { value: '50+', label: 'Photos in Elite' },
+        { value: '360°', label: 'Virtual Tours' },
+        { value: '100%', label: 'MLS Ready' },
+      ].map((s) => (
+        <div class="stat">
+          <span class="stat-value">{s.value}</span>
+          <span class="stat-label">{s.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: var(--color-linen);
+    padding-block: var(--section-y);
+  }
+
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: center;
+  }
+
+  .about-copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .about-copy p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--color-slate);
+  }
+
+  .btn-dark {
+    display: inline-block;
+    margin-top: var(--space-4);
+    background: transparent;
+    color: var(--color-obsidian);
+    border: 1px solid var(--color-obsidian);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 11px 24px;
+    transition: background var(--ease-fast), color var(--ease-fast);
+    align-self: flex-start;
+  }
+
+  .btn-dark:hover {
+    background: var(--color-obsidian);
+    color: var(--color-warm-white);
+  }
+
+  .about-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+
+  .stat {
+    background: var(--color-warm-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .stat-value {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--color-obsidian);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-slate);
+  }
+
+  @media (max-width: 768px) {
+    .about-inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+  }
+</style>

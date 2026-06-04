@@ -1,0 +1,127 @@
+---
+---
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="container hero-content">
+    <span class="section-label">Real Estate Photography</span>
+    <h1 class="hero-headline reveal">
+      Your listing,<br />presented at its finest.
+    </h1>
+    <p class="hero-sub reveal">
+      Delivered within 48 hours. Professional photography that moves listings.
+    </p>
+    <div class="hero-actions reveal">
+      <a href="#services" class="btn-gold">View Packages</a>
+      <a href="#portfolio" class="btn-ghost">See the Work</a>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true"></div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    background: var(--color-obsidian);
+    display: flex;
+    align-items: center;
+    padding-block: calc(var(--nav-height) + var(--space-32)) var(--space-24);
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201, 168, 76, 0.05) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.7) 100%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: var(--text-max);
+  }
+
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 7vw, 80px);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--color-warm-white);
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+  }
+
+  .hero-sub {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.65;
+    margin-bottom: var(--space-8);
+    transition-delay: 100ms;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    transition-delay: 200ms;
+  }
+
+  .btn-gold {
+    display: inline-block;
+    background: var(--color-gold);
+    color: var(--color-obsidian);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 13px 28px;
+    transition: opacity var(--ease-fast);
+  }
+
+  .btn-gold:hover { opacity: 0.88; }
+
+  .btn-ghost {
+    display: inline-block;
+    background: transparent;
+    color: var(--color-warm-white);
+    border: 0.5px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 13px 28px;
+    transition: border-color var(--ease-fast), color var(--ease-fast);
+  }
+
+  .btn-ghost:hover {
+    border-color: rgba(255, 255, 255, 0.55);
+    color: var(--color-warm-white);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: var(--space-8);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.5));
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { opacity: 0.4; transform: translateX(-50%) scaleY(1); }
+    50% { opacity: 1; transform: translateX(-50%) scaleY(0.7); }
+  }
+</style>

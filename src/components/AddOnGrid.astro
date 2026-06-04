@@ -1,0 +1,99 @@
+---
+const addons = [
+  { name: '3D Tour — up to 1,500 sq ft', price: '$75' },
+  { name: '3D Tour — 1,500–2,500 sq ft', price: '$125' },
+  { name: '3D Tour — larger homes', price: '$175' },
+  { name: 'Virtual staging', price: '$20 / room' },
+  { name: 'Extra twilight / exterior shots', price: '$50–$100' },
+  { name: 'Video reel — 30–45 sec', price: '$100' },
+  { name: 'Video reel — 45–60 sec (color + text overlays)', price: '$175' },
+  { name: 'Micro-reel — 10–15 sec clip', price: '$25 / clip' },
+  { name: 'Micro-reel bundle — 3 clips', price: '$60' },
+  { name: 'Micro-reel bundle — 5 clips', price: '$120' },
+];
+---
+
+<section id="addons" class="addons">
+  <div class="container">
+    <div class="addons-inner">
+      <div class="addons-intro reveal">
+        <span class="section-label">Add-Ons</span>
+        <h2 class="section-heading dark">Elevate any package.</h2>
+        <p class="addons-desc">
+          Mix and match to build exactly what the listing needs. Each add-on is priced to keep your margins intact.
+        </p>
+      </div>
+      <ul class="addons-list">
+        {addons.map((item, i) => (
+          <li class="addon-row reveal" style={`transition-delay: ${i * 50}ms`}>
+            <span class="addon-name">{item.name}</span>
+            <span class="addon-price">{item.price}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .addons {
+    background: var(--color-warm-white);
+    padding-block: var(--section-y);
+  }
+
+  .addons-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  .addons-desc {
+    margin-top: var(--space-4);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-slate);
+    max-width: 380px;
+  }
+
+  .addons-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .addon-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-block: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    gap: var(--space-4);
+  }
+
+  .addon-row:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .addon-name {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--color-obsidian);
+  }
+
+  .addon-price {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--color-gold-muted);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    .addons-inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+  }
+</style>

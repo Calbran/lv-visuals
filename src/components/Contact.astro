@@ -1,0 +1,147 @@
+---
+---
+
+<section id="contact" class="contact">
+  <div class="container contact-inner">
+    <div class="reveal">
+      <span class="section-label">Book a Shoot</span>
+      <h2 class="section-heading dark">Ready when you are.</h2>
+      <p class="contact-desc">Fill in the details below and we will confirm your booking within a few hours.</p>
+    </div>
+    <form class="form reveal" name="booking" method="POST" data-netlify="true">
+      <div class="form-row">
+        <label class="field">
+          <span class="field-label">Your name</span>
+          <input type="text" name="name" placeholder="Jane Smith" required />
+        </label>
+        <label class="field">
+          <span class="field-label">Email</span>
+          <input type="email" name="email" placeholder="jane@brokerage.com" required />
+        </label>
+      </div>
+      <div class="form-row">
+        <label class="field">
+          <span class="field-label">Phone</span>
+          <input type="tel" name="phone" placeholder="(555) 000-0000" />
+        </label>
+        <label class="field">
+          <span class="field-label">Package</span>
+          <select name="package">
+            <option value="">Select a package</option>
+            <option value="elementary">Elementary — from $100</option>
+            <option value="standard">Standard — from $150</option>
+            <option value="elite">Elite — from $350</option>
+          </select>
+        </label>
+      </div>
+      <label class="field">
+        <span class="field-label">Property address</span>
+        <input type="text" name="address" placeholder="123 Main St, City, State" />
+      </label>
+      <label class="field">
+        <span class="field-label">Message / add-ons</span>
+        <textarea name="message" rows="4" placeholder="Any add-ons, preferred dates, or questions..."></textarea>
+      </label>
+      <button type="submit" class="submit-btn">Send Booking Request</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background: var(--color-warm-white);
+    padding-block: var(--section-y);
+  }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  .contact-desc {
+    margin-top: var(--space-4);
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--color-slate);
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .field-label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-slate);
+  }
+
+  input, select, textarea {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-obsidian);
+    background: var(--color-linen);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color var(--ease-fast);
+    width: 100%;
+    appearance: none;
+  }
+
+  input::placeholder, textarea::placeholder { color: rgba(107, 104, 96, 0.5); }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--color-gold);
+  }
+
+  textarea { resize: vertical; }
+
+  .submit-btn {
+    align-self: flex-start;
+    background: var(--color-gold);
+    color: var(--color-obsidian);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 13px 28px;
+    cursor: pointer;
+    transition: opacity var(--ease-fast);
+  }
+
+  .submit-btn:hover { opacity: 0.88; }
+
+  @media (max-width: 768px) {
+    .contact-inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

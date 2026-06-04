@@ -1,0 +1,179 @@
+---
+export interface Props {
+  tier: 'elementary' | 'standard' | 'elite';
+  name: string;
+  price: string;
+  features: string[];
+  badge?: string;
+}
+
+const { tier, name, price, features, badge } = Astro.props;
+---
+
+<article class={`card card--${tier}`}>
+  <div class="tier-bar" aria-hidden="true"></div>
+  {badge && <span class="badge">{badge}</span>}
+  <div class="card-body">
+    <h3 class="card-name">{name}</h3>
+    <p class="card-price">{price}</p>
+    <ul class="features">
+      {features.map((f) => (
+        <li><span class="dash" aria-hidden="true">—</span>{f}</li>
+      ))}
+    </ul>
+    <a href="#contact" class={`card-cta ${tier === 'elite' ? 'card-cta--light' : 'card-cta--dark'}`}>
+      Book This Package
+    </a>
+  </div>
+</article>
+
+<style>
+  .card {
+    position: relative;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--ease-standard), box-shadow var(--ease-standard);
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Elementary */
+  .card--elementary {
+    background: var(--color-warm-white);
+  }
+
+  .card--elementary .tier-bar { background: #B4B2A9; }
+
+  /* Standard */
+  .card--standard {
+    background: var(--color-warm-white);
+    border-color: var(--color-gold);
+    border-width: 1.5px;
+  }
+
+  .card--standard .tier-bar { background: var(--color-gold); }
+
+  /* Elite */
+  .card--elite {
+    background: var(--color-obsidian);
+    border-color: rgba(201, 168, 76, 0.3);
+  }
+
+  .card--elite .tier-bar { background: var(--color-gold); }
+
+  .tier-bar {
+    height: 4px;
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  .badge {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    background: var(--color-gold-light);
+    color: var(--color-gold-muted);
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+  }
+
+  .card-body {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    flex: 1;
+  }
+
+  .card-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .card--elementary .card-name,
+  .card--standard .card-name { color: var(--color-obsidian); }
+  .card--elite .card-name     { color: var(--color-warm-white); }
+
+  .card-price {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-slate);
+  }
+
+  .card--elite .card-price { color: rgba(255, 255, 255, 0.45); }
+
+  .features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-block: var(--space-3);
+    flex: 1;
+  }
+
+  .features li {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    display: flex;
+    gap: var(--space-2);
+    align-items: baseline;
+  }
+
+  .card--elementary li,
+  .card--standard li { color: var(--color-slate); }
+  .card--elite li     { color: rgba(255, 255, 255, 0.55); }
+
+  .dash {
+    color: var(--color-gold);
+    flex-shrink: 0;
+  }
+
+  .card-cta {
+    display: block;
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 11px 24px;
+    border-radius: var(--radius-sm);
+    margin-top: var(--space-3);
+    transition: background var(--ease-fast), color var(--ease-fast), border-color var(--ease-fast);
+  }
+
+  .card-cta--dark {
+    background: transparent;
+    color: var(--color-obsidian);
+    border: 1px solid var(--color-obsidian);
+  }
+
+  .card-cta--dark:hover {
+    background: var(--color-obsidian);
+    color: var(--color-warm-white);
+  }
+
+  .card-cta--light {
+    background: var(--color-gold);
+    color: var(--color-obsidian);
+    border: none;
+  }
+
+  .card-cta--light:hover { opacity: 0.88; }
+</style>
