@@ -3,6 +3,26 @@
 
 <section id="about" class="about">
   <div class="container about-inner">
+
+    <div class="photos reveal">
+      <div class="photo-primary">
+        <img
+          src="/images/photographer-portrait-1_500d83d3.jpeg"
+          alt="LV Visuals photographer"
+          width="480"
+          height="600"
+        />
+      </div>
+      <div class="photo-secondary">
+        <img
+          src="/images/photographer-portrait-2_0df0ff50.jpeg"
+          alt="LV Visuals photographer at work"
+          width="280"
+          height="340"
+        />
+      </div>
+    </div>
+
     <div class="about-copy reveal">
       <span class="section-label">About</span>
       <h2 class="section-heading dark">Photography built<br />for real estate.</h2>
@@ -17,6 +37,7 @@
       </p>
       <a href="#contact" class="btn-dark">Get in Touch</a>
     </div>
+
     <div class="about-stat-grid reveal">
       {[
         { value: '48hr', label: 'Turnaround' },
@@ -30,6 +51,7 @@
         </div>
       ))}
     </div>
+
   </div>
 </section>
 
@@ -41,11 +63,65 @@
 
   .about-inner {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-16);
+    grid-template-columns: 1fr 1.1fr 0.9fr;
+    gap: var(--space-12);
     align-items: center;
   }
 
+  /* Photos column */
+  .photos {
+    position: relative;
+    height: 520px;
+  }
+
+  .photo-primary {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 78%;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .photo-primary img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .photo-secondary {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 55%;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 3px solid var(--color-linen);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+  }
+
+  .photo-secondary img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Gold accent line */
+  .photo-primary::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: var(--space-6);
+    width: 48px;
+    height: 3px;
+    background: var(--color-gold);
+    border-radius: 2px;
+  }
+
+  /* Copy column */
   .about-copy {
     display: flex;
     flex-direction: column;
@@ -80,10 +156,11 @@
     color: var(--color-warm-white);
   }
 
+  /* Stats column */
   .about-stat-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-6);
+    gap: var(--space-4);
   }
 
   .stat {
@@ -98,7 +175,7 @@
 
   .stat-value {
     font-family: var(--font-display);
-    font-size: 40px;
+    font-size: 36px;
     font-weight: 300;
     color: var(--color-obsidian);
     line-height: 1;
@@ -113,10 +190,23 @@
     color: var(--color-slate);
   }
 
+  @media (max-width: 1024px) {
+    .about-inner {
+      grid-template-columns: 1fr 1fr;
+    }
+    .photos { grid-row: span 2; }
+  }
+
   @media (max-width: 768px) {
     .about-inner {
       grid-template-columns: 1fr;
       gap: var(--space-8);
     }
+    .photos {
+      height: 360px;
+      grid-row: auto;
+    }
+    .photo-primary img { height: 300px; }
+    .photo-secondary img { height: 180px; }
   }
 </style>
