@@ -25,6 +25,11 @@ const photos = [
     alt: 'San Antonio real estate photography — luxury pool and backyard',
     tall: false,
   },
+  {
+    src: '/images/san-antonio-real-estate-photography-twilight-exterior.jpg',
+    alt: 'San Antonio real estate photography — twilight exterior shoot',
+    tall: false,
+  },
 ];
 ---
 
@@ -35,7 +40,7 @@ const photos = [
   </div>
   <div class="grid">
     {photos.map((p, i) => (
-      <div class={`grid-item${p.tall ? ' grid-item--tall' : ''} reveal`} style={`transition-delay: ${i * 75}ms`}>
+      <div class={`grid-item${p.tall ? ' grid-item--tall' : ''}${i === 5 ? ' mobile-only' : ''} reveal`} style={`transition-delay: ${i * 75}ms`}>
         <img src={p.src} alt={p.alt} loading="lazy" />
       </div>
     ))}
@@ -98,7 +103,10 @@ const photos = [
     transform: scale(1.03);
   }
 
+  .mobile-only { display: none; }
+
   @media (max-width: 768px) {
+    .mobile-only { display: block; }
     .grid {
       grid-template-columns: repeat(2, 1fr);
     }
